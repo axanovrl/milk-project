@@ -1,5 +1,8 @@
+<?php 
+  	$connect_1 = mysqli_connect("localhost", "root", "", "comment");
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <title>Milk Project - лучшая молочная продукция в Казахстане!</title>
     <meta charset="utf-8">
@@ -147,73 +150,32 @@
         </div>
         <div class="row ftco-animate">
           <div class="col-md-12">
-            <div class="carousel-testimony owl-carousel">
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+              <?php
+                $query = "SELECT * FROM tbl_comment ORDER BY id ASC";
+                $result = mysqli_query($connect_1, $query);
+                if (mysqli_num_rows($result) > 0)
+                {
+                  while($row = mysqli_fetch_array($result))
+                {
+              ?>
+               <div class="item">
+                <div class="testimony-wrap p-4 pb-5 review">
+                  <div class="user-img mb-5" style="background-image: url(images/<?php echo $row['image']; ?>)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Всей семье нравятся молочные продукты компании "Milk Project. Ни разу не давали усомниться в качестве своей продукции. Чаще всего покупаем молоко, сметана и кефир детям. 5 баллов ставлю этому производителю. Надеюсь и дальше продолжат радовать своей продукцией.</p>
-                    <p class="name">Маратова Асель</p>
+                    <p class="mb-5 pl-4 line"><?php echo $row['comment']?></p>
+                    <p class="name"><?php echo $row['name']?></p>
                   </div>
-                </div>
+				        </div>
+                <?php
+                }
+                }
+                ?>
               </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Как только я перешла на правильное питание, начала часто вместо ужина есть разные йогурты, но мне во многих не нравятся составы. Потом я попробовала купить йогурт с черникой, мне их мама посоветовала. Он мало того, что полезный, он еще и вкусный!! Для моего рациона – самое то!</p>
-                    <p class="name">Болатова Анель</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Если вы часто печете, да и просто любите попить чай с булочкой и маслом, то могу вам посоветовать сливочное масло Milk Project. Никакие другие бренды (по моему мнению) не сравнятся с этим. Уверена, что и вам тоже понравится. Качество хорошее! Беру обычно пачку побольше сразу, где 400 гр. Она у меня не залеживается, расходится быстро. Тем более, что я еще печь люблю. У нас все домашние выпечку мою любят.</p>
-                    <p class="name">Мейрамова Гульнара</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_4.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Все в нашей семье пьют молоко, покупаем 2,5%. Вкус хороший, нет ненужных запахов. Срок годности большой из-за ультрапастеризации, а не из-за того, что молоко ненастоящее, как многие думают) В нем как раз нет добавок никаких. Удобная упаковка. Мы добавляем его и в кофе, и кашу с ним варим. Нам нравится.</p>
-                    <p class="name">Каирбекова Мадина</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_5.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Чернику еще с детства обожаю, молочные продукты с такой добавкой тоже люблю. Жалко, что найти этот йогурт можно не в каждом магазине. А так нравится, состав без химикатов всяких, все натуральное. Цена на этот йогурт устраивает, я ему во всех отношениях ставлю большой плюс. К составу, как я уже сказала, нет претензий, все натуральное, черника точно есть, никаких усилителей вкуса, без гмо, без искусственных добавок.</p>
-                    <p class="name">Кусаинова Диана</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
           </div>
         </div>
       </div>

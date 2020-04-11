@@ -66,20 +66,26 @@ function updateCartTotal(){
         else if (totalProductSum > 100000){
             var deliverySum =  parseFloat(Math.ceil(Number(totalProductSum * 0.2)));
         }
+        else if (totalProductSum == 0){
+            var deliverySum = 0;
+        }
         else
         {
-            var deliverySum = parseFloat(Number(deliverySumElement.innerHTML.replace("тг.", "" )));
+            var deliverySum = parseFloat(Number(deliverySumElement.innerHTML.replace("тг.", "" )*0));
         }
 
         if (totalProductSum > 50000){
             var discountSum = parseFloat(Math.ceil(Number(totalProductSum * 0.02)));
         }
-        else if(otalProductSum > 100000){
+        else if(totalProductSum > 100000){
             var discountSum = parseFloat(Math.ceil(Number(totalProductSum * 0.05)));
+        }
+        else if(totalProductSum == 0){
+            var discountSum = 0;
         }
         else
         {
-            var discountSum = parseFloat(Number(discountSumElement.innerHTML.replace("тг.", "")))
+            var discountSum = parseFloat(Number(discountSumElement.innerHTML.replace("тг.", "")*0))
         }
        
         total = cartTotalProduct + deliverySum - discountSum;
